@@ -1,0 +1,76 @@
+# =========================
+# API / Python
+# =========================
+
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+httpx
+tenacity
+
+# =========================
+# Testing / Quality
+# =========================
+
+pytest
+pytest-asyncio
+pytest-cov
+ruff
+mypy
+
+# =========================
+# LLM providers
+# =========================
+
+openai
+google-genai
+anthropic
+
+# =========================
+# LangChain
+# =========================
+
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-google-genai
+
+# =========================
+# LangGraph
+# =========================
+
+langgraph
+
+# =========================
+# PostgreSQL / pgvector
+# =========================
+
+sqlalchemy
+psycopg[binary]
+pgvector
+alembic
+
+# =========================
+# RAG / documents
+# =========================
+
+pypdf
+python-docx
+beautifulsoup4
+lxml
+
+# =========================
+# Data
+# =========================
+
+numpy
+pandas
+
+# =========================
+# MCP
+# =========================
+
+mcp[cli]

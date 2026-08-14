@@ -1,0 +1,51 @@
+{
+    "name": "GenAI Learning",
+
+    "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+
+    "remoteUser": "vscode",
+
+    "runArgs": [
+        "--name",
+        "genai-dev",
+        "--network=genai",
+        "--env-file",
+        "${localWorkspaceFolder}/.env"
+    ],
+
+    "forwardPorts": [
+        8000
+    ],
+
+    "containerEnv": {
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-azuretools.vscode-docker",
+                "redhat.vscode-yaml",
+                "humao.rest-client",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.testing.pytestArgs": [
+                    "tests"
+                ],
+                "editor.formatOnSave": true,
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                }
+            }
+        }
+    },
+
+    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt"
+}
