@@ -1,17 +1,13 @@
 {
     "name": "GenAI Learning",
 
-    "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+    "dockerComposeFile": "../docker-compose.yml",
+
+    "service": "devcontainer",
+
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
     "remoteUser": "vscode",
-
-    "runArgs": [
-        "--name",
-        "genai-dev",
-        "--network=genai",
-        "--env-file",
-        "${localWorkspaceFolder}/.env"
-    ],
 
     "forwardPorts": [
         8000
@@ -33,6 +29,7 @@
                 "humao.rest-client",
                 "eamodio.gitlens"
             ],
+
             "settings": {
                 "python.defaultInterpreterPath": "/usr/local/bin/python",
                 "python.testing.pytestEnabled": true,
@@ -40,6 +37,7 @@
                     "tests"
                 ],
                 "editor.formatOnSave": true,
+
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff"
                 }

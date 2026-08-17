@@ -1,0 +1,86 @@
+services:
+
+  # ----------------------------------------------------------
+  # PostgreSQL database
+  # ----------------------------------------------------------
+  postgres:
+    image: postgres:18
+
+    environment:
+      POSTGRES_USER: genai
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: genai
+
+    # PostgreSQL 18:
+    # Mount the parent PostgreSQL directory.
+    # PostgreSQL will create the version-specific
+    # data directory inside it.
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+    # Expose PostgreSQL to macOS
+    ports:
+      - "5432:5432"
+
+    # Check that PostgreSQL is ready
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U genai -d genai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+    # Shared network
+    networks:
+      - genai
+
+    restart: unless-stopped
+
+
+  # ----------------------------------------------------------
+  # Development container
+  # ----------------------------------------------------------
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/python:3-3.14-trixie
+
+    container_name: genai-dev
+
+    # Load environment variables from .env
+    env_file:
+      - .env
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+
+    # Mount project into the development container
+    volumes:
+      - .:/workspaces/genai_learning
+
+    working_dir: /workspaces/genai_learning
+
+    # Shared network with PostgreSQL
+    networks:
+      - genai
+
+    # Wait until PostgreSQL is healthy
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    # Keep development container running
+    command: sleep infinity
+
+
+# ------------------------------------------------------------
+# Persistent PostgreSQL storage
+# ------------------------------------------------------------
+volumes:
+  postgres_data:
+
+
+# ------------------------------------------------------------
+# Shared network
+# ------------------------------------------------------------
+networks:
+  genai:
