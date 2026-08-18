@@ -51,3 +51,48 @@ class Product(BaseModel):
 #         self.quantity = quantity
 #
 # With BaseModel, FastAPI handles this validation automatically.
+
+class ProductUpdate(BaseModel):
+# Each product has a unique numeric id.
+    id: int
+
+    # Product name should be a string.
+    name: str
+
+    # Short description of the product.
+    description: str
+
+    # Price is stored as a float to allow decimal values like 19.99.
+    price: float
+
+    # Quantity shows how many items are available in stock.
+    quantity: int    
+
+class ProductResponse(BaseModel):
+# Each product has a unique numeric id.
+    id: int
+
+    # Product name should be a string.
+    name: str
+
+    # Short description of the product.
+    description: str
+
+    # Price is stored as a float to allow decimal values like 19.99.
+    price: float
+
+    # Quantity shows how many items are available in stock.
+    quantity: int    
+
+class ProductCreate(BaseModel):
+    # Product name should be a string.
+    name: str
+
+    # Short description of the product.
+    description: str
+
+    # Price is stored as a float to allow decimal values like 19.99.
+    price: float
+
+    # Quantity shows how many items are available in stock.
+    quantity: int
