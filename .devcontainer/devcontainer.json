@@ -28,7 +28,9 @@
                 "redhat.vscode-yaml",
                 "humao.rest-client",
                 "eamodio.gitlens",
-                "ms-ossdata.vscode-pgsql"
+                "ms-ossdata.vscode-pgsql",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap"
             ],
 
             "settings": {
