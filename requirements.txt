@@ -11,6 +11,9 @@ httpx
 tenacity
 sqlalchemy
 psycopg2
+passlib[bcrypt]
+argon2-cffi
+python-jose[cryptography]
 
 # =========================
 # Testing / Quality
