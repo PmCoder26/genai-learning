@@ -85,3 +85,4 @@ mcp[cli]
 # =========================
 nltk
 scikit-learn
+gensim

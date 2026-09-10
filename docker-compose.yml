@@ -41,7 +41,7 @@ services:
   # Development container
   # ----------------------------------------------------------
   devcontainer:
-    image: mcr.microsoft.com/devcontainers/python:3-3.14-trixie
+    image: mcr.microsoft.com/devcontainers/python:3-3.12-bookworm
 
     container_name: genai-dev
 
