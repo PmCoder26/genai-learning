@@ -81,8 +81,9 @@ pandas
 mcp[cli]
 
 # =========================
-# ML / NLP
+# ML / NLP / DL
 # =========================
 nltk
 scikit-learn
 gensim
+tensorflow
